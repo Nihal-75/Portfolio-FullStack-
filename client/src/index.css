@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-primary-100;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-800 rounded-full hover:bg-gray-700 transition-colors;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+    100% { transform: translateY(0px) scale(1); }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-500 hover:bg-primary-600
+           text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-primary-500/20
+           hover:shadow-primary-500/40 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-400;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-gray-700
+           hover:border-gray-500 text-gray-300 hover:text-white font-semibold text-sm
+           transition-all duration-200 active:scale-95 focus:outline-none;
+  }
+
+  .card {
+    @apply bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-xl;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-error {
+    @apply badge bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-500/10 text-yellow-400 border border-yellow-500/20;
+  }
+}
