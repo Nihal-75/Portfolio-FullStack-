@@ -51,9 +51,27 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+// ── Static Files (Production) ──────────────────────────────────────────────────
+const path = require('path');
+const _dirname = path.resolve();
+
 // ── Routes ────────────────────────────────────────────────────────────────────
 app.use('/api', testRoutes);
 app.use('/api', portfolioRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the client/dist directory
+  app.use(express.static(path.join(_dirname, 'client', 'dist')));
+
+  // For any other route, serve the index.html from client/dist
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.json({ success: true, message: 'Portfolio API is running...' });
+  });
+}
 
 // ── 404 + Error Handler ───────────────────────────────────────────────────────
 app.use(notFound);
