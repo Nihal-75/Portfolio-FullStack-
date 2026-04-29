@@ -31,7 +31,16 @@ export default function Resume() {
             <h2 className="text-sm font-bold text-primary-500 tracking-widest uppercase mb-2">Resume</h2>
             <h3 className="text-3xl sm:text-4xl font-bold text-white">My Professional Journey</h3>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://portfolio-full-stack-2py6.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary px-5 py-2.5 text-sm flex items-center gap-2 group border-emerald-500/30 hover:border-emerald-500/60"
+            >
+              <svg className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              View Live Portfolio
+            </a>
             <button
               onClick={() => setIsModalOpen(true)}
               className="btn-secondary px-5 py-2.5 text-sm"

@@ -14,7 +14,11 @@ const app = express();
 app.use(helmet());
 
 // ── CORS ─────────────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173').split(',');
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://portfolio-full-stack-2py6.vercel.app',
+  'https://portfolio-full-stack-eight-lake.vercel.app'
+];
 
 app.use(
   cors({
